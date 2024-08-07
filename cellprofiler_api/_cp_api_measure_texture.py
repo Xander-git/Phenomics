@@ -8,7 +8,7 @@ log = logging.getLogger(logger_name)
 logging.basicConfig(format=f'[%(asctime)s|%(levelname)s|{os.path.basename(__file__)}] %(message)s')
 
 # ----- Pkg Relative Import -----
-from .cp_api_measure_intensity import CellProfilerApiMeasureIntensity
+from ._cp_api_measure_intensity import CellProfilerApiMeasureIntensity
 
 # ----- Global Constants -----
 ORIGIN_METHOD_LABEL = "origin_method"

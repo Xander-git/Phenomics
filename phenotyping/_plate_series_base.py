@@ -3,7 +3,6 @@ from typing import List
 import numpy as np
 
 from .plate_profile import PlateProfile
-from .colony_profile import cp_connection
 
 import logging
 
@@ -15,7 +14,6 @@ class PlateSeriesBase:
     def __init__(self, imgs: List[np.ndarray], sample_name, day_index=None,
                  n_rows=8, n_cols=12, align=True, fit=True, auto_analyze=True
                  ):
-        cp_connection.refresh()
         self.img_set = imgs
         self.sample_name = sample_name
         self.n_rows = n_rows

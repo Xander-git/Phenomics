@@ -11,7 +11,7 @@ import logging
 log = logging.getLogger(__file__)
 logging.basicConfig(format=f'[%(asctime)s|%(levelname)s|%(name)s] %(message)s')
 # ----- Pkg Relative Import -----
-from .cp_api_measure_texture import CellProfilerApiMeasureTexture
+from ._cp_api_measure_texture import CellProfilerApiMeasureTexture
 
 # ----- Global Constants -----
 METRIC_LABEL = "Metric"

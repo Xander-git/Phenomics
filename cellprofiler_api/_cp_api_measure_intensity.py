@@ -8,7 +8,7 @@ logger_name = "phenomics-cellprofiler_api"
 log = logging.getLogger(logger_name)
 logging.basicConfig(format=f'[%(asctime)s|%(levelname)s|{os.path.basename(__file__)}] %(message)s')
 # ----- Pkg Relative Import -----
-from .cp_api_measure_areashape import CellProfilerApiMeasureAreaShape
+from ._cp_api_measure_areashape import CellProfilerApiMeasureAreaShape
 
 # ----- Global Constants -----
 INTEGRATED_INTENSITY = "IntegratedIntensity"

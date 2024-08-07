@@ -7,7 +7,7 @@ from cellprofiler.modules.fillobjects import FillObjects
 from cellprofiler.modules.measureobjectsizeshape import MeasureObjectSizeShape
 from cellprofiler.modules.filterobjects import FilterObjects
 
-from .cp_api_base import CellProfilerApiBase
+from ._cp_api_base import CellProfilerApiBase
 
 import os
 import logging
@@ -16,7 +16,7 @@ log = logging.getLogger(logger_name)
 logging.basicConfig(format=f'[%(asctime)s|%(levelname)s|{os.path.basename(__file__)}] %(message)s')
 
 
-class CellProfilerApiFilter(CellProfilerApiBase):
+class CellProfilerApiObject(CellProfilerApiBase):
 	merge_option = "Distance"
 	relabel_option = "Merge"
 	distance_threshold = 0

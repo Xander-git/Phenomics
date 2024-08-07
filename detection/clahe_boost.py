@@ -9,8 +9,8 @@ class ClaheBoost:
     Takes an image as input and returns a grayscale version of the image
     boosted to improve feature detection and segmentation.
     """
-    def __init__(self, img, footprint_shape="square",
-                 footprint_radius=20,
+    def __init__(self, img, footprint_shape="disk",
+                 footprint_radius=15,
                  kernel_size=96):
         if len(img.shape) > 2: #2D Check
             self.img = rgb2gray(img)

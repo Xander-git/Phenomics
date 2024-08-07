@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from .plate_series_base import PlateSeriesBase
+from ._plate_series_base import PlateSeriesBase
 
 # TODO: Add module logging
 

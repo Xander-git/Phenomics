@@ -1,7 +1,5 @@
 # ----- Imports -----
-import numpy as np
-import skimage.color
-import skimage.color as skcolor
+from skimage.color import rgb2gray
 import pandas as pd
 
 from cellprofiler_core.preferences import set_headless
@@ -26,48 +24,46 @@ set_headless()
 
 
 class CellProfilerApiBase:
-    # Inputs
-    input_img = None
-    plate_idx = None
-    img_set_list_idx = None
-    img_set_list = None
-    img_set = None
-
-    img = None
-
-    well_name = None
-
-    obj_set = None
-    cpc_measurements = None
-    pipeline = None
-    workspace = None
-
-    colony = None
-
-    keys = {}
-    results = {}
-    results_table = None
-
-    status_validity = True
-
-    status_workspace = False
-
-    # TODO: Integrate a settings option
-    settings = {
-
-    }
-
     def __init__(self):
+        self.input_img = None
+        self.img = None
+        self.well_name = None
+        self.colony = None
+        self.results_table = None
+        self.status_validity = True
+
+        self.plate_idx = None
+
         self.img_set_list = ImageSetList()
         self.img_set_list_idx = self.img_set_list.count()
         self.img_set = self.img_set_list.get_image_set(
             self.img_set_list_idx
         )
-        self._init_workspace()
+        self.pipeline = Pipeline()
+        self.cpc_measurements = Measurements(
+            mode="memory",
+            multithread=True
+        )
+        self.obj_set = ObjectSet()
+        self.pipeline.set_needs_headless_extraction(True)
+        self.pipeline.turn_off_batch_mode()
+
+        self.workspace = Workspace(
+            pipeline=self.pipeline,
+            module=Module(),
+            image_set=self.img_set,
+            object_set=self.obj_set,
+            measurements=self.cpc_measurements,
+            image_set_list=self.img_set_list,
+            frame=None,
+            create_new_window=False,
+            outlines=None
+        )
+        self.status_workspace = True
 
     @property
     def gray_img(self):
-        return skimage.color.rgb2gray(self.input_img)
+        return rgb2gray(self.input_img)
 
     @property
     def primary_name(self):
